@@ -2,18 +2,38 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
+import styled from 'styled-components';
+
+import NoteList from './components/NoteList';
+
+const Wrapper = styled.div`
+  margin: 0 auto;
+  width: 893px;
+  max-width:100%;
+`
+
+const Heading = styled.h1 `
+  color: #000;
+  font-size: 2.2em;
+  margin-top: 9px;
+  line-height: 1.1;
+  margin-bottom: 10px;
+  font-weight: bold;
+`
+
+const Rule = styled.hr`
+  margine-top:0
+  `
+
+
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Front End Project Lambda</h1>
-        </header>
-        <p className="App-intro">
-          April 29 2018 To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
+      <Wrapper>
+        <Heading>List View </Heading>
+        <Rule/>
+        <NoteList />
+      </Wrapper>
     );
   }
 }
