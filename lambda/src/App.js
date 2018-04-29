@@ -11,7 +11,7 @@ class App extends Component {
           <h1 className="App-title">Front End Project Lambda</h1>
         </header>
         <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
+          April 29 2018 To get started, edit <code>src/App.js</code> and save to reload.
         </p>
       </div>
     );
