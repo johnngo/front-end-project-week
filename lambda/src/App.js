@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+// import './App.css';
+import { Route} from 'react-router-dom';
 
 import styled from 'styled-components';
 
-import NoteList from './components/NoteList';
+import { notesData } from './notesData.js';
+import Sidebar from './components/Sidebar.js';
+import Notes from './components/Notes.js';
 
 const Wrapper = styled.div`
   margin: 0 auto;
@@ -25,14 +27,34 @@ const Rule = styled.hr`
   margine-top:0
   `
 
+const Main = styled.div`
+  display: flex;
+  width: 99.5%;
+  margin-top:13px;
+  border: 1px solid;
+  `
+
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      notesData :[]
+    };
+  }
+
+  componentDidMount() {
+    this.setState({ notesData:notesData})
+  }
   render() {
     return (
       <Wrapper>
         <Heading>List View </Heading>
         <Rule/>
-        <NoteList />
+        <Main>
+            <Sidebar />
+            <Route exact path="/" render={() => <Notes notes={this.state.notesData} />} />
+        </Main>
       </Wrapper>
     );
   }

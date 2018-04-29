@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import { Link } from 'react-router-dom';
+
 const Wrapper = styled.div`
     background-color: #d6d6d6;
     width: 25%;
@@ -26,11 +28,16 @@ const Button = styled.button`
   margin-left: 0.2em;
 `;
 
+const StyledLink = styled(Link)`
+  color: #FFF;
+  text-decoration: none;
+`;
+
 const Sidebar = () => {
     return (
         <Wrapper>
             <Title>Lambda Notes</Title>
-            <Button>View Your Notes</Button>
+            <Button><StyledLink to="/">View Your Notes</StyledLink></Button>
             <Button>Create New Note</Button>
         </Wrapper>
     )
