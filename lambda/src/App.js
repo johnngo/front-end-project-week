@@ -8,6 +8,8 @@ import { notes } from './notes.js';
 import Sidebar from './components/Sidebar.js';
 import Notes from './components/Notes.js';
 
+import CreateNoteForm from './components/CreateNoteForm.js'
+
 const Wrapper = styled.div`
   margin: 0 auto;
   width: 893px;
@@ -44,17 +46,48 @@ class App extends Component {
   }
 
   componentDidMount() {
-    this.setState({ notes:notes})
+    if(localStorage.getItem('notes')) {
+      this.setState({ notes: JSON.parse(localStorage.getItem('notes'))});
+    }
+    else {
+      this.setState({notes:notes})
+    }
   }
+
+// takes notes from state and sets them in local memory as notes
+persistNotes() {
+  const {notes} = this.state;
+  localStorage.setItem('notes', JSON.stringify(notes));
+}  
+
+addNotes = note => {
+  note = {...note, id:Number(this.state.notes.length)};
+  const notes = this.state.notes;
+  notes.push(note);
+  this.persistNotes();
+  this.setState({ notes });
+}
+
+
+
   render() {
     return (
       <Wrapper>
         <Heading>List View </Heading>
-        <Rule/>
-        <Main>
-            <Sidebar />
-            <Route exact path="/" render={() => <Notes notes={this.state.notes} />} />
-        </Main>
+          <Rule/>
+            <Main>
+              <Sidebar />
+                <Route 
+                  exact 
+                  path="/" 
+                  render={() => <Notes notes={this.state.notes} />} 
+                />
+                <Route
+                  exact
+                  path="/createNote"
+                  render={(props) => <CreateNoteForm {...props} addNote={this.addNote} />}
+                  />
+            </Main>
       </Wrapper>
     );
   }
