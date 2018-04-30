@@ -4,7 +4,7 @@ import { Route} from 'react-router-dom';
 
 import styled from 'styled-components';
 
-import { notesData } from './notesData.js';
+import { notes } from './notes.js';
 import Sidebar from './components/Sidebar.js';
 import Notes from './components/Notes.js';
 
@@ -39,12 +39,12 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      notesData :[]
+      notes :[]
     };
   }
 
   componentDidMount() {
-    this.setState({ notesData:notesData})
+    this.setState({ notes:notes})
   }
   render() {
     return (
@@ -53,7 +53,7 @@ class App extends Component {
         <Rule/>
         <Main>
             <Sidebar />
-            <Route exact path="/" render={() => <Notes notes={this.state.notesData} />} />
+            <Route exact path="/" render={() => <Notes notes={this.state.notes} />} />
         </Main>
       </Wrapper>
     );
