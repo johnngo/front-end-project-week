@@ -1,3 +1,5 @@
+import { v4 } from 'uuid';
+
 export const notes = [
     {
       'id': v4(),

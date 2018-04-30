@@ -39,7 +39,7 @@ const Sidebar = () => {
     return (
         <Wrapper>
             <Title>Lambda Notes</Title>
-            <StyledLink to="/">
+            <StyledLink to="/notes">
                 <Button>View Your Notes</Button>
             </StyledLink>
             
