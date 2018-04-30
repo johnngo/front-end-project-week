@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import { Link } from 'react-router-dom';
+import { CSVLink} from 'react-csv';
 
 const Wrapper = styled.div`
     background-color: #d6d6d6;
@@ -35,7 +36,7 @@ const StyledLink = styled(Link)`
   cursor: pointer;
 `;
 
-const Sidebar = () => {
+const Sidebar = (props) => {
     return (
         <Wrapper>
             <Title>Lambda Notes</Title>
@@ -46,6 +47,7 @@ const Sidebar = () => {
             <StyledLink to="/createNote">
                 <Button>Create New Note</Button>
             </StyledLink>
+            <CSVLink data={props.notes} filename={"my-notes.csv"} target="_black"><Button>Export Note to CSV</Button></CSVLink>
         </Wrapper>
     )
 }

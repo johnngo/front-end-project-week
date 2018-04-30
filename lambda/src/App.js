@@ -96,7 +96,7 @@ updateNote = (updatedNote, id) => {
         <Heading>List View </Heading>
           <Rule/>
             <Main>
-              <Sidebar />
+              <Sidebar notes={this.state.notes}/>
                 <Route 
                   exact 
                   path="/notes" 
