@@ -53,6 +53,26 @@ const DeleteButton = styled.button`
     cursor: pointer;
 `
 
+const StyledButton = styled(Button)`
+    padding: 0.1em 2em;
+    font-size: 1em;
+    font-weight: bold;
+    border-radius: 0;
+    margin: 1em;
+`;
+
+const CancelButton = styled.button`
+    background-color: #00b9bc;
+    color: #fff;
+    padding: 0.4em 3em;
+    font-size: 1em;
+    font-weight: bold;
+    border-radius: 0;
+    cursor: pointer;
+    border: none;
+`;
+
+
 class SingleNote extends Component {
     constructor(props) {
         super(props);
@@ -96,11 +116,11 @@ class SingleNote extends Component {
                   <StyledModalBody>
                     Are you sure you want to delete this?
                     <Link to="/notes" onClick={() => this.handleDelete(NoteId)}>
-                      <Button color="danger">Delete</Button>
+                      <StyledButton color="danger">Delete</StyledButton>
                     </Link>
-                    <Button color="secondary" onClick={() => this.toggleModal()}>
+                    <CancelButton color="secondary" onClick={() => this.toggleModal()}>
                       No
-                    </Button>
+                    </CancelButton>
                   </StyledModalBody>
                 </StyledModal> : null}
             </LinksContainer>
