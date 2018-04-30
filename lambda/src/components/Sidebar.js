@@ -40,10 +40,9 @@ const Sidebar = () => {
         <Wrapper>
             <Title>Lambda Notes</Title>
             <StyledLink to="/">
-                <Button>
-                View Your Notes
-                </Button>
+                <Button>View Your Notes</Button>
             </StyledLink>
+            
             <StyledLink to="/createNote">
                 <Button>Create New Note</Button>
             </StyledLink>
