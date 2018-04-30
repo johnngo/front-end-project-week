@@ -18,18 +18,6 @@ const Wrapper = styled.div`
   max-width:100%;
 `
 
-const Heading = styled.h1 `
-  color: #000;
-  font-size: 2.2em;
-  margin-top: 9px;
-  line-height: 1.1;
-  margin-bottom: 10px;
-  font-weight: bold;
-`
-
-const Rule = styled.hr`
-  margine-top:0
-  `
 
 const Main = styled.div`
   display: flex;
@@ -93,8 +81,6 @@ updateNote = (updatedNote, id) => {
   render() {
     return (
       <Wrapper>
-        <Heading>List View </Heading>
-          <Rule/>
             <Main>
               <Sidebar notes={this.state.notes}/>
                 <Route 
