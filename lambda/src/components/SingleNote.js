@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { Button, Modal, ModalBody } from 'reactstrap';
+import ReactMarkdown from 'react-markdown';
 
 const Wrapper = styled.div`
     background-color: #f2f1f2;
@@ -12,13 +13,6 @@ const Wrapper = styled.div`
 const NoteHeading = styled.h3`
     font-weight: bold;
     font-size: 2em;
-`;
-
-const NoteParagraph = styled.p`
-    font-size: 1.4em;
-    margin-top: 30px;
-    margin-right: 4em;
-    line-height: 1.5;
 `;
 
 const LinksContainer = styled.div`
@@ -35,8 +29,8 @@ const StyledLink = styled(Link)`
 `;
 
 const StyledModalBody = styled(ModalBody)`
-    padding: 4em 3em 4em 4em;
-    font-size: 2.1em;
+    padding: 4em 3em 4em 6em;
+    // font-size: 2.1em;
 `;
 
 const StyledModal = styled(Modal)`
@@ -51,7 +45,7 @@ const DeleteButton = styled.button`
     font-size: 1.5em;
     margin: 0 1em 1.3em 0em;
     cursor: pointer;
-`
+`;
 
 const StyledButton = styled(Button)`
     padding: 0.1em 2em;
@@ -64,14 +58,13 @@ const StyledButton = styled(Button)`
 const CancelButton = styled.button`
     background-color: #00b9bc;
     color: #fff;
-    padding: 0.4em 3em;
+    padding: 0.1em 3em;
     font-size: 1em;
     font-weight: bold;
     border-radius: 0;
     cursor: pointer;
     border: none;
 `;
-
 
 class SingleNote extends Component {
     constructor(props) {
@@ -91,27 +84,16 @@ class SingleNote extends Component {
         this.props.history.push("/notes");
     }
 
-    componentDidMount() {
-        let NoteId = this.props.match.params.id;
-        console.log(NoteId);
-        console.log(typeof NoteId);
-        let item = this.props.notes.find(item => item.id === NoteId);
-        console.log('item', item);
-        console.log('props', this.props.notes);
-    }
-
-    
     render() {
         const NoteId = this.props.match.params.id;
         const note = this.props.notes.find(item => item.id === NoteId);
         
-        
         return <Wrapper>
             <LinksContainer>
-              <StyledLink to={`/edit/${note.id}`}>
-                edit
-              </StyledLink>
-              <DeleteButton onClick={() => this.toggleModal()}>delete</DeleteButton>
+              <StyledLink to={`/edit/${note.id}`}>edit</StyledLink>
+              <DeleteButton onClick={() => this.toggleModal()}>
+                delete
+              </DeleteButton>
               {this.state.modal ? <StyledModal isOpen={this.state.modal}>
                   <StyledModalBody>
                     Are you sure you want to delete this?
@@ -125,7 +107,7 @@ class SingleNote extends Component {
                 </StyledModal> : null}
             </LinksContainer>
             <NoteHeading>{note.title}</NoteHeading>
-            <NoteParagraph>{note.text}</NoteParagraph>
+            <ReactMarkdown source={note.text} />
           </Wrapper>;
     }
 }
